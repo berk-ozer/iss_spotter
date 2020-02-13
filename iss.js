@@ -74,9 +74,9 @@ const nextISSTimesForMyLocation = callback => {
         }
 
         callback(null, passTimes);
-      })
-    })
-  })
+      });
+    });
+  });
 };
 
 module.exports = {nextISSTimesForMyLocation};
