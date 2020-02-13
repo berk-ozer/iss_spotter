@@ -9,8 +9,20 @@ const fetchMyIP = callback => {
     } else {
       callback(null, JSON.parse(body).ip);
     }
-    
   });
 };
 
-module.exports = {fetchMyIP};
+const fetchCoordsByIP = (ip, callback) => {
+  request(`https://ipvigilante.com/${ip}`, (error, response, body) => {
+    if (error) {
+      callback(error, null);
+    } else if (response.statusCode !== 200) {
+      callback(Error(`Status Code ${response.statusCode} when fetching coordinates. Response: ${body}`), null);
+    } else {
+      const { latitude, longitude } = JSON.parse(body).data;
+      callback(null, { latitude, longitude });
+    }
+  });
+};
+
+module.exports = {fetchMyIP, fetchCoordsByIP};
