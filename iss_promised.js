@@ -14,7 +14,7 @@ const fetchCoordsByIP = (jsonStr) => {
 // makes API call to fetch fly over times using coordinates, returns a promise
 const fetchISSFlyOverTimes = (jsonStr) => {
   const { latitude, longitude } = JSON.parse(jsonStr).data;
-  return request(`http://api.open-notify.org/iss-pass.json?lat=${latitude}&lon=${longitude}`)
+  return request(`http://api.open-notify.org/iss-pass.json?lat=${latitude}&lon=${longitude}`);
 };
 
 // makes multiple API calls to determine ISS fly over times
@@ -26,6 +26,6 @@ const nextISSTimesForMyLocation = () => {
       const {response} = JSON.parse(data);
       return response;
     });
-}
+};
 
 module.exports = {nextISSTimesForMyLocation};

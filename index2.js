@@ -15,4 +15,4 @@ nextISSTimesForMyLocation()
   })
   .catch(error => {
     console.log('Could not get ISS fly over times.\n' + error);
-  })
+  });
