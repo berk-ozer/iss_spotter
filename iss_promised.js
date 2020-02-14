@@ -9,6 +9,12 @@ const fetchMyIP = () => {
 const fetchCoordsByIP = (jsonStr) => {
   const ip = JSON.parse(jsonStr).ip;
   return request(`https://ipvigilante.com/${ip}`);
-}
+};
 
-module.exports = {fetchMyIP, fetchCoordsByIP};
+// makes API call to fetch fly over times using coordinates, returns a promise
+const fetchISSFlyOverTimes = (jsonStr) => {
+  const { latitude, longitude } = JSON.parse(jsonStr).data;
+  return request(`http://api.open-notify.org/iss-pass.json?lat=${latitude}&lon=${longitude}`)
+};
+
+module.exports = {fetchMyIP, fetchCoordsByIP, fetchISSFlyOverTimes};
